@@ -1,0 +1,14 @@
+ID=1548430
+Organization=Ping Identity Corporation (master)
+Product=PingFederate
+Version=10
+IssueDate=2020-01-7
+EnforcementType=3
+ExpirationDate=2020-02-29
+Tier=Subscription
+PDPAPI=false
+SaasProvisioning=true
+WSTrustSTS=true
+OAuth=true
+SignCode=FF0F
+Signature=302C02145970CC96E8E2D995CC9A610B0649011DEB50A29802141EC8F2325A1846A9DBA53A34C52D4979B7ED4670
