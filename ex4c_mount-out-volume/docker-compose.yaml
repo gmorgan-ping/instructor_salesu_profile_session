@@ -1,0 +1,38 @@
+version: "3.1"
+
+services:
+  pingfederate:
+    image: pingidentity/pingfederate:edge
+    command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    environment:
+      - PING_IDENTITY_ACCEPT_EULA=YES
+      - BASE_HOST=localhost
+    volumes:
+      - ${HOME}/salesu/profiles/pingidentity-server-profiles/baseline/pingfederate:/opt/in
+    ports:
+      - 9031:9031
+      - 9999:9999
+    networks:
+      - pingnet
+
+  pingdirectory:
+    image: pingidentity/pingdirectory:edge
+    environment:
+      - PING_IDENTITY_ACCEPT_EULA=YES
+    volumes:
+      - ${HOME}/salesu/profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
+    ports:
+      - 1636:636
+      - 1443:443
+    networks:
+      - pingnet
+                    
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:edge
+    ports:
+      - 8443:8443
+    networks:
+      - pingnet
+
+networks:
+    pingnet:
