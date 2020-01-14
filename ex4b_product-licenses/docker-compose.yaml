@@ -7,8 +7,6 @@ services:
     environment:
       - PING_IDENTITY_ACCEPT_EULA=YES
       - BASE_HOST=localhost
-      - PING_IDENTITY_DEVOPS_USER=${PING_IDENTITY_DEVOPS_USER}
-      - PING_IDENTITY_DEVOPS_KEY=${PING_IDENTITY_DEVOPS_KEY}
     volumes:
       - ${HOME}/salesu/profiles/pingidentity-server-profiles/baseline/pingfederate:/opt/in
     ports:
@@ -21,8 +19,6 @@ services:
     image: pingidentity/pingdirectory:edge
     environment:
       - PING_IDENTITY_ACCEPT_EULA=YES
-      - PING_IDENTITY_DEVOPS_USER=${PING_IDENTITY_DEVOPS_USER}
-      - PING_IDENTITY_DEVOPS_KEY=${PING_IDENTITY_DEVOPS_KEY}
     volumes:
       - ${HOME}/salesu/profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
     ports:
