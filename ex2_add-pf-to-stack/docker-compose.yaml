@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   pingfederate:
-    image: pingidentity/pingfederate:edge
+    image: pingidentity/pingfederate:latest
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/gmorgan-ping/pingidentity-server-profiles.git
@@ -10,6 +10,7 @@ services:
       - PING_IDENTITY_ACCEPT_EULA=YES
       - PING_IDENTITY_DEVOPS_USER=${PING_IDENTITY_DEVOPS_USER}
       - PING_IDENTITY_DEVOPS_KEY=${PING_IDENTITY_DEVOPS_KEY}
+      - BASE_HOST=10.101.43.62
     ports:
       - 9031:9031
       - 9999:9999
@@ -17,7 +18,7 @@ services:
       - pingnet
 
   pingdirectory:
-    image: pingidentity/pingdirectory:edge
+    image: pingidentity/pingdirectory:latest
     environment:
       - SERVER_PROFILE_URL=https://github.com/gmorgan-ping/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=baseline/pingdirectory
@@ -31,7 +32,7 @@ services:
       - pingnet
                     
   pingdataconsole:
-    image: pingidentity/pingdataconsole:edge
+    image: pingidentity/pingdataconsole:latest
     ports:
       - 8443:8443
     networks:
